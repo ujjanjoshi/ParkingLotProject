@@ -2,6 +2,7 @@ from tkinter import *
 from PIL import ImageTk
 from tkinter import messagebox
 from mainpage import MainPage
+from facereco import FaceReco
 
 
 class Login:
@@ -38,9 +39,9 @@ class Login:
         submit = Button(Frame_login, command=self.check_function, text="Login", bd=0, font=("Goudy old style", 15),
                         bg="#6162FF",
                         fg="white").place(x=90, y=320, width=180, height=40)
-        face_cam = Button(Frame_login, text="UseCamera", bd=0, font=("Goudy old style", 15),
-                        bg="#6162FF",
-                        fg="white").place(x=300, y=320, width=180, height=40)
+        face_cam = Button(Frame_login, command=self.camera, text="UseCamera", bd=0, font=("Goudy old style", 15),
+                          bg="#6162FF",
+                          fg="white").place(x=300, y=320, width=180, height=40)
 
     def check_function(self):
         if self.username.get() == "" or self.password.get() == "":
@@ -55,4 +56,6 @@ class Login:
     def close_window(self):
         self.root.destroy()
 
-
+    def camera(self):
+        self.close_window()
+        FaceReco(True)
